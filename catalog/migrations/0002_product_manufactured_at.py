@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
-            model_name='product',
+            model_name='catalog',
             name='manufactured_at',
             field=models.DateTimeField(default=datetime.datetime(2024, 4, 25, 1, 8, 55, 845188, tzinfo=datetime.timezone.utc), verbose_name='Дата производства продукта'),
         ),
