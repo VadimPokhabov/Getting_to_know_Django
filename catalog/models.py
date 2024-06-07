@@ -31,6 +31,7 @@ class Product(models.Model):
     quantity = models.PositiveIntegerField(default=0, verbose_name='Количество')
     created_at = models.DateTimeField(default=timezone.now, verbose_name='Дата создания')
     updated_at = models.DateTimeField(verbose_name='Дата изменения', **NULLABLE)
+    is_published = models.BooleanField(default=False, verbose_name="Признак публикации")
     # manufactured_at = models.DateTimeField(default=timezone.now(), verbose_name='Дата производства продукта')
 
     def __str__(self):
@@ -39,6 +40,11 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+        permissions = [
+            ("set_published_status", "Can publish product"),
+            ("change_description", "Can change product description"),
+            ("change_category", "Can change product category"),
+        ]
 
 
 class Version(models.Model):
